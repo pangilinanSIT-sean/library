@@ -16,9 +16,29 @@ public class BooksController : Controller
     }
 
     public async Task<IActionResult> Index()
+
     {
         var books = await _books.GetAllAsync();
         return View(books);                             
     }
+
+    public IActionResult Create()
+    {
+        return View(new Book());
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Create(Book book)
+    {
+        if (!ModelState.IsValid)                        // a required field was left empty
+        {
+            return View(book);
+        }
+
+        await _books.AddAsync(book);
+        return RedirectToAction(nameof(Index));
+    }
+
 
 }
