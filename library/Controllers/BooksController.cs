@@ -18,7 +18,7 @@ public class BooksController : Controller
     public async Task<IActionResult> Index()
     {
         var books = await _books.GetAllAsync();
-        return View(books);                             // Views/Books/Index.cshtml
+        return View(books);                             
     }
 
 }
