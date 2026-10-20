@@ -4,7 +4,11 @@ using Npgsql;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<BookRepository>();
 
+builder.Services.AddScoped<MemberRepository>();
+
 builder.Services.AddControllersWithViews();
+
+
 
 var connectionString = builder.Configuration.GetConnectionString("Library");
 if (string.IsNullOrWhiteSpace(connectionString))
