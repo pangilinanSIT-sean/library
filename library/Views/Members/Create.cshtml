@@ -3,9 +3,14 @@
     ViewData["Title"] = "Add a member";
 }
 
-<h1 class="mb-3">Add a member</h1>
+<div class="page-head">
+    <div>
+        <h1>Add a member</h1>
+        <p class="sub">Email is optional.</p>
+    </div>
+</div>
 
-<form asp-action="Create" method="post" class="card card-body" style="max-width:36rem">
+<form asp-action="Create" method="post" class="panel">
 
     <div class="mb-3">
         <label asp-for="FullName" class="form-label">Full name</label>
@@ -19,7 +24,7 @@
         <span asp-validation-for="Email" class="text-danger"></span>
     </div>
 
-    <div class="mb-3">
+    <div class="mb-4">
         <label asp-for="MemberType" class="form-label">Type</label>
         <select asp-for="MemberType" class="form-select">
             <option>Regular</option>

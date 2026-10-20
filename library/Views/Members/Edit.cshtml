@@ -3,9 +3,14 @@
     ViewData["Title"] = "Edit a member";
 }
 
-<h1 class="mb-3">Edit a member</h1>
+<div class="page-head">
+    <div>
+        <h1>Edit a member</h1>
+        <p class="sub">Change anything, then save.</p>
+    </div>
+</div>
 
-<form asp-action="Edit" method="post" class="card card-body" style="max-width:36rem">
+<form asp-action="Edit" method="post" class="panel">
     <input type="hidden" asp-for="MemberId" />
 
     <div class="mb-3">
@@ -20,7 +25,7 @@
         <span asp-validation-for="Email" class="text-danger"></span>
     </div>
 
-    <div class="mb-3">
+    <div class="mb-4">
         <label asp-for="MemberType" class="form-label">Type</label>
         <select asp-for="MemberType" class="form-select">
             <option>Regular</option>

@@ -3,9 +3,14 @@
     ViewData["Title"] = "Edit a book";
 }
 
-<h1 class="mb-3">Edit a book</h1>
+<div class="page-head">
+    <div>
+        <h1>Edit a book</h1>
+        <p class="sub">Change anything, then save.</p>
+    </div>
+</div>
 
-<form asp-action="Edit" method="post" class="card card-body" style="max-width:36rem">
+<form asp-action="Edit" method="post" class="panel">
     <input type="hidden" asp-for="BookId" />
 
     <div class="mb-3">
@@ -26,7 +31,7 @@
         </select>
     </div>
 
-    <div class="mb-3">
+    <div class="mb-4">
         <label asp-for="Price" class="form-label"></label>
         <input asp-for="Price" class="form-control" />
         <span asp-validation-for="Price" class="text-danger"></span>

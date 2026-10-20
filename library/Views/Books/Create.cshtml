@@ -3,9 +3,14 @@
     ViewData["Title"] = "Add a book";
 }
 
-<h1 class="mb-3">Add a book</h1>
+<div class="page-head">
+    <div>
+        <h1>Add a book</h1>
+        <p class="sub">Category and price are optional.</p>
+    </div>
+</div>
 
-<form asp-action="Create" method="post" class="card card-body" style="max-width:36rem">
+<form asp-action="Create" method="post" class="panel">
 
     <div class="mb-3">
         <label asp-for="Title" class="form-label"></label>
@@ -25,7 +30,7 @@
         </select>
     </div>
 
-    <div class="mb-3">
+    <div class="mb-4">
         <label asp-for="Price" class="form-label"></label>
         <input asp-for="Price" class="form-control" />
         <span asp-validation-for="Price" class="text-danger"></span>
