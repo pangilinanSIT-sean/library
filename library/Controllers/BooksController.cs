@@ -29,6 +29,19 @@ public class BooksController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Edit(Book book)
+    {
+        if (!ModelState.IsValid)
+        {
+            return View(book);
+        }
+
+        await _books.UpdateAsync(book);
+        return RedirectToAction(nameof(Index));
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(Book book)
     {
         if (!ModelState.IsValid)                        // a required field was left empty
@@ -39,6 +52,17 @@ public class BooksController : Controller
         await _books.AddAsync(book);
         return RedirectToAction(nameof(Index));
     }
+
+    public async Task<IActionResult> Edit(long id)
+    {
+        var book = await _books.GetByIdAsync(id);
+        if (book == null)
+        {
+            return NotFound();
+        }
+        return View(book);
+    }
+
 
 
 }
