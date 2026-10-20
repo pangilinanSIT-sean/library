@@ -63,6 +63,21 @@ public class BooksController : Controller
         return View(book);
     }
 
+    public async Task<IActionResult> Delete(long id)
+    {
+        var book = await _books.GetByIdAsync(id);
+        if (book == null)
+        {
+            return NotFound();
+        }
+        return View(book);
+    }
 
-
+    [HttpPost, ActionName("Delete")]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> DeleteConfirmed(long id)
+    {
+        await _books.DeleteAsync(id);
+        return RedirectToAction(nameof(Index));
+    }
 }
