@@ -1,0 +1,41 @@
+﻿@model List<Member>
+@{
+    ViewData["Title"] = "Members";
+}
+
+<div class="page-head">
+    <div>
+        <h1>Members</h1>
+        <p class="sub">@Model.Count members</p>
+    </div>
+    <a asp-action="Create" class="btn btn-primary">Add a member</a>
+</div>
+
+<div class="ledger-wrap">
+    <table class="ledger">
+        <thead>
+            <tr>
+                <th class="id">#</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Type</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var member in Model)
+            {
+                <tr>
+                    <td class="id">@member.MemberId</td>
+                    <td>@member.FullName</td>
+                    <td>@(member.Email ?? "—")</td>
+                    <td><span class="tag tag-@member.MemberType.ToLower()">@member.MemberType</span></td>
+                    <td class="actions">
+                        <a asp-action="Edit" asp-route-id="@member.MemberId" class="action">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@member.MemberId" class="action action-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
