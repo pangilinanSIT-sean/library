@@ -15,7 +15,6 @@
     <table class="ledger">
         <thead>
             <tr>
-                <th class="id">#</th>
                 <th>Title</th>
                 <th>Category</th>
                 <th class="num">Price</th>
@@ -26,7 +25,6 @@
             @foreach (var book in Model)
             {
                 <tr>
-                    <td class="id">@book.BookId</td>
                     <td>@book.Title</td>
                     <td><span class="tag tag-@((book.Category ?? "none").ToLower())">@(book.Category ?? "—")</span></td>
                     <td class="num">@(book.Price?.ToString("N2") ?? "—")</td>

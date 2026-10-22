@@ -1,0 +1,32 @@
+﻿@model Note
+@{
+    ViewData["Title"] = "Edit a note";
+}
+
+<div class="page-head">
+    <div>
+        <h1>Edit a note</h1>
+        <p class="sub">Change anything, then save.</p>
+    </div>
+</div>
+
+<form asp-action="Edit" method="post" class="panel">
+    <input type="hidden" asp-for="NoteId" />
+
+    <div class="mb-3">
+        <label asp-for="Title" class="form-label"></label>
+        <input asp-for="Title" class="form-control" maxlength="100" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="mb-4">
+        <label asp-for="Body" class="form-label">Details</label>
+        <textarea asp-for="Body" class="form-control" rows="5"></textarea>
+        <span asp-validation-for="Body" class="text-danger"></span>
+    </div>
+
+    <div>
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a asp-action="Index" class="btn btn-link">Cancel</a>
+    </div>
+</form>

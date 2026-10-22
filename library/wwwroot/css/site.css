@@ -459,6 +459,13 @@ a {
         color: #14a37f;
     }
 
+.tiles .tile:nth-child(3) {
+    border-top-color: #b02a3e;
+}
+    .tiles .tile:nth-child(3) .arrow {
+    color: #b02a3e;
+    }
+
 .tile:hover {
     transform: translateY(-3px);
     box-shadow: 0 14px 34px rgba(91, 75, 219, 0.16);

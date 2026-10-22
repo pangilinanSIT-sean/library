@@ -15,7 +15,6 @@
     <table class="ledger">
         <thead>
             <tr>
-                <th class="id">#</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Type</th>
@@ -26,7 +25,6 @@
             @foreach (var member in Model)
             {
                 <tr>
-                    <td class="id">@member.MemberId</td>
                     <td>@member.FullName</td>
                     <td>@(member.Email ?? "—")</td>
                     <td><span class="tag tag-@member.MemberType.ToLower()">@member.MemberType</span></td>

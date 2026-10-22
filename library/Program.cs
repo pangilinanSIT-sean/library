@@ -6,6 +6,8 @@ builder.Services.AddScoped<BookRepository>();
 
 builder.Services.AddScoped<MemberRepository>();
 
+builder.Services.AddScoped<NoteRepository>();
+
 builder.Services.AddControllersWithViews();
 
 
