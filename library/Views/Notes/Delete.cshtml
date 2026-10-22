@@ -1,0 +1,29 @@
+﻿@model Note
+@{
+    ViewData["Title"] = "Delete a note";
+}
+
+<div class="page-head">
+    <div>
+        <h1>Delete a note</h1>
+        <p class="sub">This cannot be undone.</p>
+    </div>
+</div>
+
+<div class="panel panel-danger">
+
+    <p>Are you sure you want to delete this note?</p>
+    <dl class="facts">
+        <dt>Title</dt>
+        <dd>@Model.Title</dd>
+        <dt>Details</dt>
+        <dd>@(Model.Body ?? "—")</dd>
+        <dt>Created</dt>
+        <dd>@Model.CreatedOn.ToString("MMM d, yyyy")</dd>
+    </dl>
+
+    <form asp-action="Delete" asp-route-id="@Model.NoteId" method="post">
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-action="Index" class="btn btn-link">Cancel</a>
+    </form>
+</div>
