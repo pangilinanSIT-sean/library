@@ -27,21 +27,39 @@ public class MemberRepository
         };
     }
 
-    // READ: every member, sorted by full name.
+    // READ: every member, with how many books each has out now.
     public async Task<List<Member>> GetAllAsync()
     {
-        const string sql = "SELECT member_id, full_name, email, member_type FROM lending.member ORDER BY full_name;";
+        // 1. The SQL: every member, joined to their open loans, which are counted.
+        const string sql =
+            "SELECT m.member_id, m.full_name, m.email, m.member_type, COUNT(l.loan_id) " +
+            "FROM lending.member m " +
+            "LEFT JOIN lending.loan l ON l.member_id = m.member_id AND l.returned_on IS NULL " +
+            "GROUP BY m.member_id " +
+            "ORDER BY m.full_name;";
 
+        // 2. An empty list, to fill.
         var members = new List<Member>();
 
+        // 3. A command that will run the SQL.
         await using var command = _dataSource.CreateCommand(sql);
+
+        // 4. Run it, and get a reader for the rows.
         await using var reader = await command.ExecuteReaderAsync();
 
         while (await reader.ReadAsync())
         {
-            members.Add(ReadMember(reader));
+            // 6. Copy the row into a Member.
+            var member = ReadMember(reader);
+
+            // 7. Add the count from the fifth column, which only this SELECT has.
+            member.OpenLoans = reader.GetInt64(4);
+
+            // 8. Add the member to the list.
+            members.Add(member);
         }
 
+        // 9. Give the list back.
         return members;
     }
 

@@ -1,3 +1,6 @@
+/* Library: colourful minimal theme. Replace the whole contents of wwwroot/css/site.css with this.
+   Change the colours in :root to restyle everything at once. */
+
 :root {
     --accent: #5b4bdb;
     --accent-dark: #4638b5;
@@ -459,13 +462,6 @@ a {
         color: #14a37f;
     }
 
-.tiles .tile:nth-child(3) {
-    border-top-color: #b02a3e;
-}
-    .tiles .tile:nth-child(3) .arrow {
-    color: #b02a3e;
-    }
-
 .tile:hover {
     transform: translateY(-3px);
     box-shadow: 0 14px 34px rgba(91, 75, 219, 0.16);
@@ -505,3 +501,175 @@ a {
     .footer a {
         color: var(--muted);
     }
+
+/* ================= Laboratory 11 additions ================= */
+
+/* status pills */
+.tag-out {
+    background: #ffe9c7;
+    color: #9a5b00;
+}
+
+.tag-overdue {
+    background: #ffdce3;
+    color: #c4223f;
+}
+
+.tag-returned {
+    background: #d4f3e3;
+    color: #0f7a4a;
+}
+
+/* summary cards */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.stat {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-top: 4px solid var(--accent);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1rem 1.25rem;
+}
+
+.stat-num {
+    font-size: 1.9rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+}
+
+.stat-label {
+    color: var(--muted);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-top: 0.3rem;
+}
+
+.stat-out {
+    border-top-color: var(--amber);
+}
+
+.stat-overdue {
+    border-top-color: var(--danger);
+}
+
+.stat-returned {
+    border-top-color: #14a37f;
+}
+
+/* the Return button */
+.btn-return {
+    background: transparent;
+    border: 1px solid #14a37f;
+    color: #0f7a4a;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.25rem 0.85rem;
+    transition: background 0.15s, color 0.15s;
+}
+
+    .btn-return:hover {
+        background: #14a37f;
+        color: #fff;
+    }
+
+/* a link that looks like text until you hover it */
+.plain {
+    color: inherit;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+    .plain:hover {
+        color: var(--accent);
+    }
+
+/* the Books out count */
+.count {
+    display: inline-block;
+    min-width: 1.9rem;
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.8rem;
+    padding: 0.15rem 0.55rem;
+    border-radius: 999px;
+}
+
+.count-zero {
+    background: #efeef7;
+    color: var(--muted);
+}
+
+.count-some {
+    background: #dfe6ff;
+    color: #2f45c4;
+}
+
+.count-full {
+    background: #ffdce3;
+    color: #c4223f;
+}
+
+/* messages: the Delete page notice and the form summary share one style */
+.notice, .validation-summary-errors {
+    position: relative;
+    background: #fdecee;
+    color: #a3283a;
+    border: 1px solid #f6c6cd;
+    border-radius: 10px;
+    padding: 0.75rem 1rem 0.75rem 2.9rem;
+    margin-bottom: 1.25rem;
+    max-width: 34rem;
+    font-size: 0.9rem;
+}
+
+    .notice::before, .validation-summary-errors::before {
+        content: "!";
+        position: absolute;
+        left: 0.9rem;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 1.3rem;
+        height: 1.3rem;
+        border-radius: 50%;
+        background: var(--danger);
+        color: #fff;
+        font-weight: 700;
+        font-size: 0.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .validation-summary-errors ul {
+        margin: 0;
+        padding-left: 0;
+        list-style: none;
+    }
+
+.validation-summary-valid {
+    display: none;
+}
+
+.field-validation-error {
+    display: block;
+    margin-top: 0.3rem;
+}
+
+.input-validation-error {
+    border-color: var(--danger) !important;
+}
+
+.hint {
+    color: var(--muted);
+    font-size: 0.9rem;
+}
