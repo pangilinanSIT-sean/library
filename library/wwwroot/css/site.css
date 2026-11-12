@@ -673,3 +673,89 @@ a {
     color: var(--muted);
     font-size: 0.9rem;
 }
+
+.tile-books {
+    --tile: #5b4bdb;
+}
+/* indigo */
+.tile-members {
+    --tile: #14a37f;
+}
+/* green  */
+.tile-loans {
+    --tile: #f08a24;
+}
+/* orange */
+.tile-notes {
+    --tile: #d6409f;
+}
+/* pink   */
+
+.tile {
+    border-top-color: var(--tile, var(--accent));
+}
+
+    .tile .arrow {
+        color: var(--tile, var(--accent));
+    }
+
+    .tile:hover {
+        box-shadow: 0 14px 34px color-mix(in srgb, var(--tile, #5b4bdb) 22%, transparent);
+    }
+
+.section-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 2.5rem 0 1rem;
+}
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: 1rem;
+}
+
+.step {
+    display: flex;
+    gap: 0.9rem;
+    align-items: flex-start;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.1rem 1.25rem;
+}
+
+.step-num {
+    flex: none;
+    width: 1.9rem;
+    height: 1.9rem;
+    border-radius: 50%;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.step-1 {
+    background: #5b4bdb;
+}
+
+.step-2 {
+    background: #f08a24;
+}
+
+.step-3 {
+    background: #14a37f;
+}
+
+.step-title {
+    font-weight: 700;
+}
+
+.step-sub {
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin-top: 0.2rem;
+}

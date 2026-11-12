@@ -11,19 +11,49 @@
 </div>
 
 <div class="tiles">
-    <a asp-controller="Books" asp-action="Index" class="tile">
+    <a asp-controller="Books" asp-action="Index" class="tile tile-books">
         <span class="arrow">→</span>
         <div class="tile-title">Books</div>
         <div class="tile-sub">Browse and edit the catalogue</div>
     </a>
-    <a asp-controller="Members" asp-action="Index" class="tile">
+    <a asp-controller="Members" asp-action="Index" class="tile tile-members">
         <span class="arrow">→</span>
         <div class="tile-title">Members</div>
         <div class="tile-sub">Students, faculty and regulars</div>
     </a>
-    <a asp-controller="Notes" asp-action="Index" class="tile">
+    <a asp-controller="Loans" asp-action="Index" class="tile tile-loans">
+        <span class="arrow">→</span>
+        <div class="tile-title">Loans</div>
+        <div class="tile-sub">Borrow and return books</div>
+    </a>
+    <a asp-controller="Notes" asp-action="Index" class="tile tile-notes">
         <span class="arrow">→</span>
         <div class="tile-title">Notes</div>
         <div class="tile-sub">Updates etc.</div>
     </a>
+</div>
+
+<h2 class="section-title">How it works</h2>
+<div class="steps">
+    <div class="step">
+        <span class="step-num step-1">1</span>
+        <div>
+            <div class="step-title">Add books and members</div>
+            <div class="step-sub">Build the catalogue and register the people who borrow from it.</div>
+        </div>
+    </div>
+    <div class="step">
+        <span class="step-num step-2">2</span>
+        <div>
+            <div class="step-title">Borrow a book</div>
+            <div class="step-sub">Pick a member and a book. A member can have up to 3 books out, for 1 to 30 days.</div>
+        </div>
+    </div>
+    <div class="step">
+        <span class="step-num step-3">3</span>
+        <div>
+            <div class="step-title">Return it</div>
+            <div class="step-sub">Press Return when the book comes back, and the loan shows as Returned.</div>
+        </div>
+    </div>
 </div>
