@@ -1,0 +1,62 @@
+﻿@model List<LoanView>
+@{
+    ViewData["Title"] = "Loans";
+}
+
+<div class="page-head">
+    <div>
+        <h1>Loans</h1>
+        <p class="sub">@Model.Count loans, newest first</p>
+    </div>
+    <a asp-action="Borrow" class="btn btn-primary">Borrow a book</a>
+</div>
+
+<div class="stats">
+    <div class="stat stat-out">
+        <div class="stat-num">@(Model.Count(l => l.Status == "Out"))</div>
+        <div class="stat-label">Out</div>
+    </div>
+    <div class="stat stat-overdue">
+        <div class="stat-num">@(Model.Count(l => l.Status == "Overdue"))</div>
+        <div class="stat-label">Overdue</div>
+    </div>
+    <div class="stat stat-returned">
+        <div class="stat-num">@(Model.Count(l => l.Status == "Returned"))</div>
+        <div class="stat-label">Returned</div>
+    </div>
+</div>
+
+<div class="ledger-wrap">
+    <table class="ledger">
+        <thead>
+            <tr>
+                <th>Member</th>
+                <th>Book</th>
+                <th>Loaned</th>
+                <th>Due</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var loan in Model)
+            {
+                <tr>
+                    <td><a asp-controller="Members" asp-action="Details" asp-route-id="@loan.MemberId" class="plain">@loan.MemberName</a></td>
+                    <td>@loan.BookTitle</td>
+                    <td style="white-space:nowrap">@(loan.LoanedOn.ToString("MMM d, yyyy"))</td>
+                    <td style="white-space:nowrap">@(loan.LoanedOn.AddDays(loan.DaysAllowed).ToString("MMM d, yyyy"))</td>
+                    <td><span class="tag tag-@loan.Status.ToLower()">@loan.Status</span></td>
+                    <td class="actions">
+                        @if (loan.ReturnedOn == null)
+                        {
+                            <form asp-action="Return" asp-route-id="@loan.LoanId" method="post" class="d-inline">
+                                <button type="submit" class="btn-return">Return</button>
+                            </form>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
